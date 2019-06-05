@@ -20,3 +20,12 @@ uint16_t filter(holder_t holder, uint16_t input)
 {
 }
 
+int main(int argc, char *argv[])
+{
+  uint16_t sample;
+  holder_t holder;
+  filter_init(&holder, 0);
+  scanf("%u", &sample);
+  printf("%u\n", filter(&holder, sample));
+}
+
