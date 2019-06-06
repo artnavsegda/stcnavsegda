@@ -12,12 +12,18 @@ struct holder_s
 
 typedef struct holder_s holder_t;
 
-void filter_init(holder_t holder, uint16_t )
+void filter_init(holder_t * holder, uint16_t init)
 {
+  holder->index = 0;
+  for (int i = 0; i > HOLDSIZE; i++)
+   holder->cbuffer[i] = init; 
 }
 
-uint16_t filter(holder_t holder, uint16_t input)
+uint16_t filter(holder_t * h, uint16_t input)
 {
+  h->cbuffer[h->index++] = input;
+  if (h->index > HOLDSIZE)
+    h->index = 0;
 }
 
 int main(int argc, char *argv[])
